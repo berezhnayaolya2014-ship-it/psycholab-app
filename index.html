@@ -1,0 +1,302 @@
+<!--
+   ______                            __
+  / ____/___  ____ ___  ____  __  __/ /____  _____
+ / /   / __ \/ __ `__ \/ __ \/ / / / __/ _ \/ ___/
+/ /___/ /_/ / / / / / / /_/ / /_/ / /_/  __/ /
+\____/\____/_/ /_/ /_/ .___/\__,_/\__/\___/_/
+                    /_/
+        Created with Perplexity Computer
+        https://www.perplexity.ai/computer
+-->
+<!-- Perplexity Computer Attribution -->
+<meta name="generator" content="Perplexity Computer">
+<meta name="author" content="Perplexity Computer">
+<meta property="og:see_also" content="https://www.perplexity.ai/computer">
+<link rel="author" href="https://www.perplexity.ai/computer">
+
+<!DOCTYPE html>
+<html lang="uk" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PsychoLab — Психологічна лабораторія</title>
+  <meta name="description" content="Академічна платформа для студентів-психологів: самодіагностика емоцій, цінностей та емпатії на основі наукових моделей"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- SIDEBAR NAV -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-top">
+    <div class="brand">
+      <svg class="brand-icon" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+        <circle cx="18" cy="18" r="16" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
+        <circle cx="18" cy="13" r="6" fill="currentColor" opacity="0.15"/>
+        <ellipse cx="18" cy="13" rx="4" ry="4" fill="currentColor" opacity="0.6"/>
+        <path d="M9 28c0-4.97 4.03-9 9-9s9 4.03 9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="26" cy="9" r="2" fill="var(--accent)" opacity="0.8"/>
+      </svg>
+      <span class="brand-name">PsychoLab</span>
+    </div>
+    <button class="sidebar-close" id="sidebar-close" aria-label="Закрити меню" onclick="toggleSidebar()">✕</button>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a href="#" class="nav-item active" data-page="home" onclick="navigateTo('home',this)">
+      <span class="nav-icon">⌂</span><span>Головна</span>
+    </a>
+    <div class="nav-section-label">Модулі</div>
+    <a href="#" class="nav-item" data-page="module-plutchik" onclick="navigateTo('module-plutchik',this)">
+      <span class="nav-icon">◉</span>
+      <span>Колесо Плутчика</span>
+      <span class="nav-tag">Теорія + вправа</span>
+    </a>
+    <a href="#" class="nav-item" data-page="module-mak" onclick="navigateTo('module-mak',this)">
+      <span class="nav-icon">⬡</span>
+      <span>МАК-сесія</span>
+      <span class="nav-tag">NVC-аналіз</span>
+    </a>
+    <a href="#" class="nav-item" data-page="module-schwartz" onclick="navigateTo('module-schwartz',this)">
+      <span class="nav-icon">◈</span>
+      <span>Цінності Шварца</span>
+      <span class="nav-tag">58 цінностей</span>
+    </a>
+    <div class="nav-section-label">Аналітика</div>
+    <a href="#" class="nav-item" data-page="dashboard" onclick="navigateTo('dashboard',this)">
+      <span class="nav-icon">▦</span><span>Мій профіль</span>
+    </a>
+  </nav>
+
+  <div class="sidebar-footer">
+    <button class="theme-btn" id="theme-btn" onclick="toggleTheme()" aria-label="Змінити тему">
+      <span id="theme-icon">☀</span> <span id="theme-label">Світла тема</span>
+    </button>
+  </div>
+</aside>
+
+<!-- MAIN CONTENT -->
+<div class="main-wrap" id="main-wrap">
+  <header class="topbar">
+    <button class="menu-btn" onclick="toggleSidebar()" aria-label="Меню">☰</button>
+    <div class="breadcrumb" id="breadcrumb">Головна</div>
+    <div class="topbar-right">
+      <div class="session-badge" id="session-badge">Сесія активна</div>
+    </div>
+  </header>
+
+  <main class="content" id="content">
+
+    <!-- ===== HOME ===== -->
+    <div class="page active" id="page-home">
+      <div class="home-hero">
+        <div class="hero-tag">Академічна психологічна платформа</div>
+        <h1 class="hero-title">Дослідж свій<br/><em>психологічний профіль</em></h1>
+        <p class="hero-sub">Три науково обґрунтовані модулі на основі моделей Плутчика, МАК і Шварца. Самодіагностика, глибока рефлексія та аналітика результатів.</p>
+        <div class="hero-stats">
+          <div class="stat"><span class="stat-n">3</span><span class="stat-l">наукові моделі</span></div>
+          <div class="stat-div"></div>
+          <div class="stat"><span class="stat-n">30+</span><span class="stat-l">вправ та кроків</span></div>
+          <div class="stat-div"></div>
+          <div class="stat"><span class="stat-n">~40</span><span class="stat-l">хвилин</span></div>
+        </div>
+      </div>
+
+      <div class="modules-grid">
+        <div class="module-card-lg" onclick="navigateTo('module-plutchik', null)">
+          <div class="mcl-header" style="background: linear-gradient(135deg,#1e1b4b 0%,#312e81 50%,#4338ca 100%)">
+            <div class="mcl-visual">
+              <div class="plutchik-mini" id="plutchik-mini-home"></div>
+            </div>
+          </div>
+          <div class="mcl-body">
+            <div class="mcl-tag">Модуль 01 · Емоційний інтелект</div>
+            <h3>Колесо Плутчика</h3>
+            <p>Вивчи структуру 8 базових емоцій та їх похідних. Пройди діагностику свого поточного емоційного стану через 10 кроків рефлексії.</p>
+            <div class="mcl-points">
+              <span>● Теорія Роберта Плутчика</span>
+              <span>● Первинні та змішані емоції</span>
+              <span>● Профіль інтенсивності</span>
+              <span>● Тілесна карта + журнал</span>
+            </div>
+            <div class="mcl-footer">
+              <span class="mcl-time">⏱ 12 хвилин</span>
+              <span class="mcl-steps">10 кроків</span>
+              <span class="mcl-start">Почати →</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="module-card-lg" onclick="navigateTo('module-mak', null)">
+          <div class="mcl-header" style="background: linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%)">
+            <div class="mcl-visual mak-visual">
+              <div class="mak-cards-preview" id="mak-preview"></div>
+            </div>
+          </div>
+          <div class="mcl-body">
+            <div class="mcl-tag">Модуль 02 · Проєктивні техніки</div>
+            <h3>МАК-сесія</h3>
+            <p>Метафоричні асоціативні карти як інструмент діагностики. Повна сесія за методикою ненасильницького спілкування (NVC) Маршала Розенберга.</p>
+            <div class="mcl-points">
+              <span>● Теорія МАК та проєкції</span>
+              <span>● 4 рівні NVC-аналізу</span>
+              <span>● Потреби за Розенбергом</span>
+              <span>● Інтеграційні запити</span>
+            </div>
+            <div class="mcl-footer">
+              <span class="mcl-time">⏱ 15 хвилин</span>
+              <span class="mcl-steps">12 кроків</span>
+              <span class="mcl-start">Почати →</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="module-card-lg" onclick="navigateTo('module-schwartz', null)">
+          <div class="mcl-header" style="background: linear-gradient(135deg,#0d1f0d 0%,#1a3a1a 50%,#2d5a2d 100%)">
+            <div class="mcl-visual">
+              <canvas id="schwartz-preview-canvas" width="160" height="160"></canvas>
+            </div>
+          </div>
+          <div class="mcl-body">
+            <div class="mcl-tag">Модуль 03 · Ціннісна психологія</div>
+            <h3>Цінності Шварца</h3>
+            <p>Опитувальник на основі теорії базових людських цінностей Шалома Шварца. 58 дескрипторів, 10 мотиваційних типів, аналіз ціннісних конфліктів.</p>
+            <div class="mcl-points">
+              <span>● Теорія Шварца (1992)</span>
+              <span>● 10 ціннісних блоків</span>
+              <span>● Шкала 9 балів</span>
+              <span>● Радар-аналіз + конфлікти</span>
+            </div>
+            <div class="mcl-footer">
+              <span class="mcl-time">⏱ 20 хвилин</span>
+              <span class="mcl-steps">58 пунктів</span>
+              <span class="mcl-start">Почати →</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="theory-note">
+        <div class="tn-icon">📚</div>
+        <div>
+          <strong>Науковий підхід:</strong> всі методики базуються на верифікованих психологічних моделях. Результати є матеріалом для особистої рефлексії та навчання — не клінічною діагностикою.
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== MODULE 1: PLUTCHIK ===== -->
+    <div class="page" id="page-module-plutchik">
+      <div class="module-layout">
+        <div class="module-sidebar">
+          <div class="msb-header">
+            <div class="msb-tag">Модуль 01</div>
+            <h2 class="msb-title">Колесо Плутчика</h2>
+          </div>
+          <div class="step-list" id="plutchik-step-list"></div>
+          <div class="msb-theory-btn" onclick="toggleTheory('plutchik')">
+            <span>📖 Теоретична довідка</span><span id="theory-arrow-plutchik">▼</span>
+          </div>
+          <div class="theory-panel hidden" id="theory-plutchik">
+            <h4>Роберт Плутчик (1927–2006)</h4>
+            <p>Психоеволюційна теорія емоцій. 8 базових емоцій організовані у вигляді колеса з трьома рівнями інтенсивності (від пелюстки до ядра).</p>
+            <h4>8 базових емоцій:</h4>
+            <ul>
+              <li><strong>Радість ↔ Смуток</strong></li>
+              <li><strong>Довіра ↔ Відраза</strong></li>
+              <li><strong>Страх ↔ Злість</strong></li>
+              <li><strong>Здивування ↔ Передчуття</strong></li>
+            </ul>
+            <h4>Змішані емоції (діади):</h4>
+            <p>Поєднання сусідніх секторів: Радість + Довіра = <em>Любов</em>; Страх + Здивування = <em>Трепет</em>; Злість + Передчуття = <em>Агресія</em> тощо.</p>
+            <h4>Інтенсивність:</h4>
+            <p>Кожна базова емоція має три рівні: <em>слабкий → середній → сильний</em> (наприклад, Журба → Смуток → Горе).</p>
+          </div>
+        </div>
+        <div class="module-main" id="plutchik-main">
+          <!-- Steps rendered by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== MODULE 2: MAK ===== -->
+    <div class="page" id="page-module-mak">
+      <div class="module-layout">
+        <div class="module-sidebar">
+          <div class="msb-header">
+            <div class="msb-tag">Модуль 02</div>
+            <h2 class="msb-title">МАК-сесія</h2>
+          </div>
+          <div class="step-list" id="mak-step-list"></div>
+          <div class="msb-theory-btn" onclick="toggleTheory('mak')">
+            <span>📖 Теоретична довідка</span><span id="theory-arrow-mak">▼</span>
+          </div>
+          <div class="theory-panel hidden" id="theory-mak">
+            <h4>Метафоричні асоціативні карти</h4>
+            <p>МАК (MAC — Metaphorical Associative Cards) — проєктивна техніка, де зображення виступає «дзеркалом» несвідомого. Клієнт проєктує власні змісти на нейтральний образ.</p>
+            <h4>Ненасильницьке спілкування (NVC)</h4>
+            <p>Модель Маршала Розенберга розрізняє 4 компоненти: <em>Спостереження → Почуття → Потреби → Прохання</em>.</p>
+            <h4>Потреби за Розенбергом:</h4>
+            <p>Базові потреби: автономія, зв'язок, фізична безпека, смисл, чесність, ігри/радість, мир, духовна комунія. Почуття завжди сигналізують про задоволену або незадоволену потребу.</p>
+          </div>
+        </div>
+        <div class="module-main" id="mak-main"></div>
+      </div>
+    </div>
+
+    <!-- ===== MODULE 3: SCHWARTZ ===== -->
+    <div class="page" id="page-module-schwartz">
+      <div class="module-layout">
+        <div class="module-sidebar">
+          <div class="msb-header">
+            <div class="msb-tag">Модуль 03</div>
+            <h2 class="msb-title">Цінності Шварца</h2>
+          </div>
+          <div class="step-list" id="schwartz-step-list"></div>
+          <div class="msb-theory-btn" onclick="toggleTheory('schwartz')">
+            <span>📖 Теоретична довідка</span><span id="theory-arrow-schwartz">▼</span>
+          </div>
+          <div class="theory-panel hidden" id="theory-schwartz">
+            <h4>Шалом Шварц (нар. 1938)</h4>
+            <p>Теорія базових людських цінностей (1992). Цінності організовані у 10 мотиваційних типів, розміщених по колу у вигляді <em>циркумплексу</em>.</p>
+            <h4>10 ціннісних блоків:</h4>
+            <ul>
+              <li><strong>Влада, Досягнення</strong> — самовдосконалення</li>
+              <li><strong>Гедонізм, Стимуляція, Самостійність</strong> — відкритість до змін</li>
+              <li><strong>Універсалізм, Доброзичливість</strong> — турбота про інших</li>
+              <li><strong>Традиції, Конформізм, Безпека</strong> — збереження</li>
+            </ul>
+            <h4>Ціннісні конфлікти:</h4>
+            <p>Сусідні блоки сумісні, протилежні — конфліктують. Ключові осі: <em>Самовдосконалення ↔ Трансцендентність</em> та <em>Відкритість ↔ Збереження</em>.</p>
+          </div>
+        </div>
+        <div class="module-main" id="schwartz-main"></div>
+      </div>
+    </div>
+
+    <!-- ===== DASHBOARD ===== -->
+    <div class="page" id="page-dashboard">
+      <div class="dash-header">
+        <h1>Мій психологічний профіль</h1>
+        <p class="dash-sub">Зведений аналіз результатів усіх пройдених модулів</p>
+      </div>
+      <div class="dash-grid" id="dash-grid">
+        <div class="dash-empty">
+          <div class="de-icon">◎</div>
+          <h3>Поки немає результатів</h3>
+          <p>Пройди хоча б один модуль, щоб побачити аналітику тут.</p>
+          <button class="btn-primary" onclick="navigateTo('home',null)">До модулів →</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script src="data.js"></script>
+<script src="modules.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
