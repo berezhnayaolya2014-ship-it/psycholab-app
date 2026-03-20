@@ -1322,3 +1322,18 @@ input[type="range"].custom-range::-webkit-slider-thumb:active { cursor: grabbing
   z-index: 190;
 }
 .sidebar-overlay.open { display: block; }
+
+/* ---- SUPPORT CARD ---- */
+.support-card {
+  background: linear-gradient(135deg, var(--accent-bg), var(--teal-bg));
+  border: 1px solid var(--accent-border);
+  border-radius: var(--r-xl);
+  padding: var(--sp8);
+  margin-top: var(--sp8);
+  animation: fadeInUp 0.6s ease;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

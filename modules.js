@@ -418,6 +418,25 @@ function renderP_Summary() {
 
     <div class="insight-list">${insights}</div>
 
+    ${['\u0421\u0442\u0440\u0430\u0445', '\u0421\u043c\u0443\u0442\u043e\u043a', '\u0412\u0456\u0434\u0440\u0430\u0437\u0430', '\u0417\u043b\u0456\u0441\u0442\u044c'].includes(e?.name) ? `
+    <div class="support-card">
+      <img src="https://img.freepik.com/premium-vector/hug-yourself-cartoon-self-care-self-love-concept-love-depression-mental-health_191755-1054.jpg" 
+           alt="\u0421\u0430\u043c\u043e\u043f\u0456\u0434\u0442\u0440\u0438\u043c\u043a\u0430" style="width:180px;border-radius:50%;display:block;margin:0 auto 1rem;">
+      <h3 style="text-align:center;font-family:var(--font-display);color:var(--accent)">Ти впорався з важким ✨</h3>
+      <p style="text-align:center;color:var(--text-m);line-height:1.7">
+        Дослідити темні куточки своїх емоцій — це справжня сміливість. 
+        Пам’ятай: кожна важка емоція несе в собі важливе послання. 
+        Зроби паузу, подихай і стався до себе з ніжністю 🌿
+      </p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1rem">
+        <span style="font-size:2rem">🤗</span>
+        <span style="font-size:2rem">🌸</span>
+        <span style="font-size:2rem">☕</span>
+        <span style="font-size:2rem">🕯️</span>
+        <span style="font-size:2rem">💙</span>
+      </div>
+    </div>` : ''}
+
     <div class="step-nav" style="margin-top:var(--sp5)">
       <button class="btn-ghost" onclick="initPluchtik()">↺ Повторити</button>
       <div class="step-nav-right">
@@ -856,6 +875,29 @@ function renderMAK_Summary() {
       <div class="insight-text"><strong>Мій крок:</strong> «${makState.reflections.integration2}»</div>
     </div>` : ''}
     <canvas id="mak-summary-chart" height="80" style="margin-top:var(--sp5)"></canvas>
+    ${(()=>{
+      const heavyFeelings = ['\u0422\u0440\u0438\u0432\u043e\u0433\u0430','\u0421\u0442\u0440\u0430\u0445','\u0421\u043c\u0443\u0442\u043e\u043a','\u0417\u043b\u0456\u0441\u0442\u044c','\u0421\u043e\u0440\u043e\u043c','\u041f\u0440\u043e\u0432\u0438\u043d\u0430','\u0420\u043e\u0437\u043f\u0430\u0447','\u0421\u0430\u043c\u043e\u0442\u043d\u0456\u0441\u0442\u044c'];
+      const feelings = makState.nvc.feelings || [];
+      const hasHeavy = feelings.some(f => heavyFeelings.includes(f));
+      if (!hasHeavy) return '';
+      return `<div class="support-card">
+      <img src="https://img.freepik.com/premium-vector/hug-yourself-cartoon-self-care-self-love-concept-love-depression-mental-health_191755-1054.jpg" 
+           alt="\u0421\u0430\u043c\u043e\u043f\u0456\u0434\u0442\u0440\u0438\u043c\u043a\u0430" style="width:180px;border-radius:50%;display:block;margin:0 auto 1rem;">
+      <h3 style="text-align:center;font-family:var(--font-display);color:var(--accent)">Ти впорався з важким ✨</h3>
+      <p style="text-align:center;color:var(--text-m);line-height:1.7">
+        Дослідити темні куточки своїх емоцій — це справжня сміливість. 
+        Пам’ятай: кожна важка емоція несе в собі важливе послання. 
+        Зроби паузу, подихай і стався до себе з ніжністю 🌿
+      </p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1rem">
+        <span style="font-size:2rem">🤗</span>
+        <span style="font-size:2rem">🌸</span>
+        <span style="font-size:2rem">☕</span>
+        <span style="font-size:2rem">🕯️</span>
+        <span style="font-size:2rem">💙</span>
+      </div>
+    </div>`;
+    })()}
     <div class="step-nav" style="margin-top:var(--sp5)">
       <button class="btn-ghost" onclick="initMAK()">↺ Нова сесія</button>
       <div class="step-nav-right">
@@ -1072,6 +1114,25 @@ function renderSZ_Results() {
       </div>
     </div>
 
+    ${(()=>{
+      const allAvg = blockScores.length ? blockScores.reduce((s,b)=>s+b.avg,0)/blockScores.length : 0;
+      if (allAvg >= 3.0) return '';
+      return `<div class="support-card">
+      <img src="https://img.freepik.com/premium-vector/hug-yourself-cartoon-self-care-self-love-concept-love-depression-mental-health_191755-1054.jpg" 
+           alt="\u0421\u0430\u043c\u043e\u043f\u0456\u0434\u0442\u0440\u0438\u043c\u043a\u0430" style="width:180px;border-radius:50%;display:block;margin:0 auto 1rem;">
+      <h3 style="text-align:center;font-family:var(--font-display);color:var(--accent)">Познайомсь з собою глибше 🌱</h3>
+      <p style="text-align:center;color:var(--text-m);line-height:1.7">
+        Іноді ми втрачаємо зв’язок зі своїми цінностями — і це нормально. Цей результат не вирок, а запрошення познайомитися з собою глибше 🌱
+      </p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1rem">
+        <span style="font-size:2rem">🤗</span>
+        <span style="font-size:2rem">🌸</span>
+        <span style="font-size:2rem">☕</span>
+        <span style="font-size:2rem">🕯️</span>
+        <span style="font-size:2rem">💙</span>
+      </div>
+    </div>`;
+    })()}
     <div class="step-nav">
       <button class="btn-ghost" onclick="initSchwartz()">↺ Повторити</button>
       <div class="step-nav-right">

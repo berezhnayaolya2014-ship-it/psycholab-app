@@ -280,39 +280,6 @@ function drawPluchtikMini() {
   document.getElementById('plutchik-mini-home')?.replaceWith(canvas);
 }
 
-function drawSchwartzPreview() {
-  const canvas = document.getElementById('schwartz-preview-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  const cx = 80, cy = 80, count = SCHWARTZ_BLOCKS.length;
-  const angle = (2 * Math.PI) / count;
-  const maxR = 54;
-  const vals = [4, 6, 3, 5, 5, 6, 5, 3, 4, 5];
-  ctx.beginPath();
-  vals.forEach((v, i) => {
-    const a = i * angle - Math.PI / 2;
-    const r = (v + 1) / 8 * maxR;
-    if (i === 0) ctx.moveTo(cx + r * Math.cos(a), cy + r * Math.sin(a));
-    else ctx.lineTo(cx + r * Math.cos(a), cy + r * Math.sin(a));
-  });
-  ctx.closePath();
-  ctx.fillStyle = 'rgba(129,140,248,0.2)'; ctx.fill();
-  ctx.strokeStyle = 'rgba(129,140,248,0.6)'; ctx.lineWidth = 1.5; ctx.stroke();
-  SCHWARTZ_BLOCKS.forEach((b, i) => {
-    const a = i * angle - Math.PI / 2;
-    ctx.beginPath();
-    ctx.moveTo(cx, cy);
-    ctx.lineTo(cx + maxR * Math.cos(a), cy + maxR * Math.sin(a));
-    ctx.strokeStyle = 'rgba(255,255,255,0.06)'; ctx.lineWidth = 1; ctx.stroke();
-    const pr = maxR + 14;
-    ctx.fillStyle = '#8888a8';
-    ctx.font = '8px Inter, sans-serif';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText(b.name.slice(0,5), cx + pr * Math.cos(a), cy + pr * Math.sin(a));
-  });
-}
-
 // ---- MAK PREVIEW ----
 function renderMAKPreview() {
   const container = document.getElementById('mak-preview');
@@ -460,7 +427,6 @@ function generateIntegratedInsights() {
 // ---- INIT ----
 document.addEventListener('DOMContentLoaded', () => {
   drawPluchtikMini();
-  drawSchwartzPreview();
   renderMAKPreview();
   navigateTo('home', document.querySelector('[data-page="home"]'));
 });
